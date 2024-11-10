@@ -4,8 +4,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import BooksList from './src/components/BooksList'
 import BookDetail  from './src/components/BookDetail'
 import BorrowedScreen from './src/components/BorrowedScreen';
-import Ionicons from '@expo/vector-icons/Ionicons';
-
+import { BookProvider } from './src/components/BookProvider';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 export default function App() {
 
 const Tab = createBottomTabNavigator();
@@ -21,24 +21,29 @@ function HomeStack() {
 }
 
     return (
+      <BookProvider>
         <NavigationContainer>
             <Tab.Navigator screenOptions={({ route }) => ({
         tabBarActiveTintColor: '#4a235a',
         tabBarInactiveTintColor: 'gray',
         headerTitleAlign: 'left',
-        tabBarIcon: ({ focused, color }) => {
+        tabBarIcon: ({ focused }) => {
           let iconName;
-          if (route.name === 'Transactions') {
-            iconName = focused ? 'wallet' : 'wallet-outline'
+          let color;
+          if (route.name === 'Books List') {
+            iconName =  'bookshelf'
+            color = focused ? '#4a235a' : '#B0B0B0'
           } else {
-            iconName = focused ? 'stats-chart' : 'stats-chart-outline';
+            iconName = 'book-multiple'
+            color = focused ? '#4a235a' : '#B0B0B0'
           }
-          return <Ionicons name={iconName} size={24} color={color} />;
+          return <MaterialCommunityIcons name={iconName} size={24} color={color} />
         }
       })}>
-                <Tab.Screen name="Home" component={HomeStack} />
+                <Tab.Screen name="Books List" component={HomeStack} options={{headerShown: false }}/>
                 <Tab.Screen name="Borrowed" component={BorrowedScreen} />
             </Tab.Navigator>
         </NavigationContainer>
+        </BookProvider>
     );
 }

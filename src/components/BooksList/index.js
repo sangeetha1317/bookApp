@@ -3,27 +3,13 @@ import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { db } from '../../Firebase/config';
 import { collection, getDocs } from 'firebase/firestore';
 import styles from './styles';
+import { useBooks } from '../BookProvider';
 
 export default function BooksList({ navigation }) {
-  const [books, setBooks] = useState([]);
-
-  useEffect(() => {
-    const fetchBooks = async () => {
-      try {
-        const booksCollection = collection(db, 'books');
-        const booksSnapshot = await getDocs(booksCollection);
-        const booksList = booksSnapshot.docs.map(doc => ({
-          ...doc.data(),
-          id: doc.id
-        }));
-        setBooks(booksList);
-      } catch (error) {
-        console.error("Error fetching books: ", error);
-      }
-    };
-    fetchBooks();
-  }, []);
-
+  const { books, loading } = useBooks();
+  if (loading) {
+    return <Text>Loading...</Text>;
+  }
   return (
     <View style={styles.container}>
       <FlatList

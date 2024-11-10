@@ -17,10 +17,17 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
         marginBottom: 20
     },
+    ratingContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 4
+     },
     bookRate: {
-        fontStyle: 'italic',
+        fontSize: 16,
         fontWeight: '500',
-        color: '#4a235a'
+        color: '#4a235a',
+        marginTop: 4,
+        marginLeft: 10
     },
     bookalignment: {
         flexDirection: 'row',
@@ -42,7 +49,24 @@ const styles = StyleSheet.create({
     bookSummary: {
         fontSize: 16,
         marginBottom: 20
-    }
+    },
+    button: {
+        backgroundColor: '#4A90E2',
+        paddingVertical: 12,
+        paddingHorizontal: 24,
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 16,
+      },
+      buttonText: {
+        color: '#FFFFFF',
+        fontSize: 16,
+        fontWeight: '600',
+      },
+      buttonDisabled: {
+        backgroundColor: '#B0B0B0',
+      },
 
 });
 
