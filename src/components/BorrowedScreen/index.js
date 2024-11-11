@@ -15,8 +15,8 @@ export default function BorrowedScreen() {
 
   const handleReturn = async (bookId) => {
     try {
-      await returnBook(bookId);
       Alert.alert('Success', 'Book returned successfully');
+      await returnBook(bookId);
     } catch (error) {
       console.error('Error returning book: ', error);
       Alert.alert('Error', 'Unable to return the book.');

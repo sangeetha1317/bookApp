@@ -10,13 +10,13 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#4a235a',
         marginTop: 10,
+        marginLeft: 10,
         fontWeight: 'bold'
     },
     trAuthor: {
         fontSize: 15,
         marginTop: 10,
         fontStyle: 'italic',
-
     },
     infoCard: {
         backgroundColor: '#fff',
